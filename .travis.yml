@@ -1,24 +1,33 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - bower --version
-  - npm install phantomjs-prebuilt
-  - node_modules/phantomjs-prebuilt/bin/phantomjs --version
-
+- npm config set spin false
+- npm install -g bower
+- bower --version
+- npm install phantomjs-prebuilt
+- node_modules/phantomjs-prebuilt/bin/phantomjs --version
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: u3NyAsgNymqGQhHET9OoI7mYtXsfxsDG4SR1sywVoV9uxyA5YFvW3xhZ8cXYJzeqZ7BaErymHm3gTcKjwaZxT5+ap7J6JzlNJfUGkEt1WTt5TIPeQf8FnkddJdRSurylywfdmNvV89d88zinDYE3BfljjSDX7RnwNj4Fw0qtvSud55qFS6O0T6Wr8Qo5Kw2Qc/Q626qWoNK/eva21Qt1OeFB+qmyEZtVu2BdIC3R/ned3iCZE9JlboDRGyX9zx0bClFmN1ZeXj6MkBsvxqfUJBAlX2gPfL6VxKdMdBM5dCv899YN2Q+RZ82V7n95T2PvbG9Df/buDJGngK9lzHgdrNzGGnaA3q3c8+LF2Wgc28wg/t4fya5xWUOV63Byi6GBXOj+BeSOMoEXOHyMfxWqd5GtkSmJjfmOSPyIW3DoG1D+vbZK3qO24gVlfrEcaECfIviNKrcurkTHz92xIRlqUe2fYHKqaMWUro4meH5qdNSauTVY2ftJxo0ZcgH093BtW9WR/Vcd3YNTw1qaoMllXiqVP9T1iAJDGdX2yyfPn7wUysMGc+Xev8ca1ygFAuIDkVk0gmN8Ty97AttRXG56grwhf81jUnLCgUfeayBEB0sp6IWHpNxl9LdCcu2iaNwfyMGN7UWKtseeZV3l3NZhFtDbqK19tPh9zcVpYCuhfDI=
+  app: damp-brook-16786
+  on:
+    repo: ianknauer/peep-learning
