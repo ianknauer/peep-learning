@@ -20,6 +20,14 @@ module.exports = function(environment) {
     DS: {
       host: 'http://localhost:4000',
       namespace: 'api'
+    },
+    fastboot: {
+      hostWhitelist: ['damp-brook-16786.herokuapp.com', /^localhost:\d+$/]
+    },
+    'ember-simple-auth': {
+      authenticationRoute: 'auth.login',
+      routeIfAlreadyAuthenticated: 'app.index',
+      routeAfterAuthentication: 'app.index'
     }
   };
 
