@@ -9,8 +9,7 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-sudo: s
-false
+sudo: false
 cache:
   directories:
   - node_modules
